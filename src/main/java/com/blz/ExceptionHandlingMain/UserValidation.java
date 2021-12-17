@@ -71,4 +71,55 @@ public class UserValidation {
         else
             return false;
     }
+
+    public boolean validPasswordLength(String password) {
+
+        this.password = password;
+        String regex=".{8,12}";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(password);
+
+        if(matcher.matches())
+            return true;
+        else
+            return false;
+    }
+
+    public boolean validPasswordUpperLetter(String password) {
+
+        this.password = password;
+        String regex="(?=.*[A-Z]).{8,12}";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(password);
+
+        if(matcher.matches())
+            return true;
+        else
+            return false;
+    }
+
+    public boolean validPasswordNumericLetter(String password) {
+
+        this.password = password;
+        String regex="(?=.*[0-9]).{8,12}";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(password);
+
+        if(matcher.matches())
+            return true;
+        else
+            return false;
+    }
+
+    public boolean validPasswordSpecialSymbol(String password) {
+
+        this.password = password;
+        String regex="(?=.*[!@#$%^&*]).{8,12}";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(password);
+        if(matcher.matches())
+            return true;
+        else
+            return false;
+    }
 }
