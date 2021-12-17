@@ -175,7 +175,7 @@ public class UserValidationTesting {
         }
         catch (AssertionError e)
         {
-            System.out.println("Password must contain at least one special symbol !!!");
+            System.out.println("Password must contain exact one special symbol !!!");
         }
     }
 }
