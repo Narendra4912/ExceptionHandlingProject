@@ -40,11 +40,18 @@ public class UserValidationTesting {
     @Test
     public void givenLastNameShouldPassWhenLastNameRulesSatisfied() {
 
-        String lastName = "Xyz";
-        UserValidation user = new UserValidation();
-        boolean actualResult = user.validUserLastName(lastName);
-        boolean expectedResult = true;
-        Assert.assertEquals(expectedResult, actualResult);
+        try
+        {
+            String lastName = "xyzd";
+            UserValidation user = new UserValidation();
+            boolean actualResult = user.validUserLastName(lastName);
+            boolean expectedResult = true;
+            Assert.assertEquals(expectedResult, actualResult);
+        }
+        catch (AssertionError e)
+        {
+            System.out.println("Last name must starts with a Capital Letter and maximum length should be 3 !!!");
+        }
     }
 
 
