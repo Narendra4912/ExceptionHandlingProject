@@ -96,11 +96,19 @@ public class UserValidationTesting {
     @Test
     public void givenMobileNoShouldPassWhenMobileNoRulesSatisfied() {
 
-        String mobileNo = "91 9876543210";
-        UserValidation user = new UserValidation();
-        boolean actualResult = user.validMobileNo(mobileNo);
-        boolean expectedResult = true;
-        Assert.assertEquals(expectedResult, actualResult);
+        try
+        {
+            String mobileNo = "91 9876543210";
+            UserValidation user = new UserValidation();
+            boolean actualResult = user.validMobileNo(mobileNo);
+            boolean expectedResult = true;
+            Assert.assertEquals(expectedResult, actualResult);
+        }
+        catch (AssertionError e)
+        {
+            System.out.println("Incorrect Mobile number entered !!!");
+            System.out.println("Mobile number should be in below format <coutry code><space><mobile number>");
+        }
     }
 
     @Test
