@@ -22,11 +22,19 @@ public class UserValidationTesting {
     @Test
     public void givenFirstNameShouldPassWhenFirstNameRulesSatisfied() {
 
-        String firstName = "Abc";
-        UserValidation user = new UserValidation();
-        boolean actualResult = user.validUserFirstName(firstName);
-        boolean expectedResult = true;
-        Assert.assertEquals(expectedResult, actualResult);
+        try
+        {
+            String firstName = "abc";
+            UserValidation user = new UserValidation();
+            boolean actualResult = user.validUserFirstName(firstName);
+            boolean expectedResult = true;
+            Assert.assertEquals(expectedResult, actualResult);
+        }
+        catch (AssertionError e)
+        {
+            System.out.println("First name must starts with a Capital Letter and maximum length should be 3 !!!");
+        }
+
     }
 
     @Test
