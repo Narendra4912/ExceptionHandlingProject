@@ -58,12 +58,20 @@ public class UserValidationTesting {
     @Test
     public void givenEmailShouldPassWhenEmailRulesSatisfied() {
 
-        //Happy Email testing
-        String email = "abc.xyz@domain.co.in";
-        UserValidation user = new UserValidation();
-        boolean actualResult = user.validEmailAddress(email);
-        boolean expectedResult = true;
-        Assert.assertEquals(expectedResult, actualResult);
+        try
+        {
+            //Happy Email testing
+            String email = "abc.xyz@domain.co.in";
+            UserValidation user = new UserValidation();
+            boolean actualResult = user.validEmailAddress(email);
+            boolean expectedResult = true;
+            Assert.assertEquals(expectedResult, actualResult);
+        }
+        catch (AssertionError e)
+        {
+            System.out.println("Incorrect Email ID entered !!!");
+            System.out.println("Below are some examples of valid Email ID's => \nabc@domain.com \nabc.xyz@domain.com \nabc@domain.co.in \nabc.xyz@domain.co.in");
+        }
     }
 
     @Test
