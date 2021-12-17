@@ -148,11 +148,18 @@ public class UserValidationTesting {
     @Test
     public void givenPasswordShouldPassWhenPasswordHasMinimum1NumericLetter() {
 
-        String password = "Abcde1gh";
-        UserValidation user = new UserValidation();
-        boolean actualResult = user.validPasswordNumericLetter(password);
-        boolean expectedResult = true;
-        Assert.assertEquals(expectedResult, actualResult);
+        try
+        {
+            String password = "Abcde1gh";
+            UserValidation user = new UserValidation();
+            boolean actualResult = user.validPasswordNumericLetter(password);
+            boolean expectedResult = true;
+            Assert.assertEquals(expectedResult, actualResult);
+        }
+        catch (AssertionError e)
+        {
+            System.out.println("Password must contain at least one numeric letter !!!");
+        }
     }
 
     @Test
