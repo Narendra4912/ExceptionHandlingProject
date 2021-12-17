@@ -114,11 +114,18 @@ public class UserValidationTesting {
     @Test
     public void givenPasswordShouldPassWhenPasswordIs8DigitInLength() {
 
-        String password = "abcdefgh";
-        UserValidation user = new UserValidation();
-        boolean actualResult = user.validPasswordLength(password);
-        boolean expectedResult = true;
-        Assert.assertEquals(expectedResult, actualResult);
+        try
+        {
+            String password = "abcdefgh";
+            UserValidation user = new UserValidation();
+            boolean actualResult = user.validPasswordLength(password);
+            boolean expectedResult = true;
+            Assert.assertEquals(expectedResult, actualResult);
+        }
+        catch (AssertionError e)
+        {
+            System.out.println("Password must be minimum 8 digit long !!!");
+        }
     }
 
     @Test
