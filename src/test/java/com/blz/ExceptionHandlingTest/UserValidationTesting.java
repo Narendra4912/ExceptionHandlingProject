@@ -165,10 +165,17 @@ public class UserValidationTesting {
     @Test
     public void givenPasswordShouldPassWhenPasswordHasExact1SpecialLetter() {
 
-        String password = "Abcd@1gh";
-        UserValidation user = new UserValidation();
-        boolean actualResult = user.validPasswordSpecialSymbol(password);
-        boolean expectedResult = true;
-        Assert.assertEquals(expectedResult, actualResult);
+        try
+        {
+            String password = "Abcd@1gh";
+            UserValidation user = new UserValidation();
+            boolean actualResult = user.validPasswordSpecialSymbol(password);
+            boolean expectedResult = true;
+            Assert.assertEquals(expectedResult, actualResult);
+        }
+        catch (AssertionError e)
+        {
+            System.out.println("Password must contain at least one special symbol !!!");
+        }
     }
 }
