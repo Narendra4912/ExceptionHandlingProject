@@ -9,6 +9,8 @@ import org.junit.Test;
 
 public class UserValidationTesting {
 
+    private String message;
+
     @Before
     public void setUpBeforeEnvironment() {
         System.out.println("Inside the @Before Method");
@@ -20,7 +22,7 @@ public class UserValidationTesting {
     }
 
     @Test
-    public void givenFirstNameShouldPassWhenFirstNameRulesSatisfied() {
+    public void givenFirstNameShouldPassWhenFirstNameRulesSatisfied() throws CustomEmailException {
 
         try
         {
@@ -30,9 +32,11 @@ public class UserValidationTesting {
             boolean expectedResult = true;
             Assert.assertEquals(expectedResult, actualResult);
         }
-        catch (AssertionError e)
+        catch (CustomEmailException e)
         {
-            System.out.println("First name must starts with a Capital Letter and maximum length should be 3 !!!");
+            this.message = "First name must starts with a Capital Letter and maximum length should be 3 !!!";
+            throw new CustomEmailException(message);
+            //System.out.println("First name must starts with a Capital Letter and maximum length should be 3 !!!");
         }
 
     }

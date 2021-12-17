@@ -7,7 +7,7 @@ public class UserValidation {
 
     String firstName, lastName, email, mobileNo, password;
 
-    public boolean validUserFirstName(String firstName)
+    public boolean validUserFirstName throws CustomEmailException(String firstName)
     {
         this.firstName = firstName;
         String userRegex = "^[A-Z]{1}[A-Za-z0-9]{2}$";
