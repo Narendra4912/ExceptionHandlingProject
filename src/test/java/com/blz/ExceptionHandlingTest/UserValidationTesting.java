@@ -131,11 +131,18 @@ public class UserValidationTesting {
     @Test
     public void givenPasswordShouldPassWhenPasswordHasMinimum1CapitalLetter() {
 
-        String password = "Abcdefgh";
-        UserValidation user = new UserValidation();
-        boolean actualResult = user.validPasswordUpperLetter(password);
-        boolean expectedResult = true;
-        Assert.assertEquals(expectedResult, actualResult);
+        try
+        {
+            String password = "Abcdefgh";
+            UserValidation user = new UserValidation();
+            boolean actualResult = user.validPasswordUpperLetter(password);
+            boolean expectedResult = true;
+            Assert.assertEquals(expectedResult, actualResult);
+        }
+        catch (AssertionError e)
+        {
+            System.out.println("Password must contain at least one upper case letter !!!");
+        }
     }
 
     @Test
