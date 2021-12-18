@@ -11,18 +11,8 @@ public class UserValidationTesting {
 
     private String message;
 
-    @Before
-    public void setUpBeforeEnvironment() {
-        System.out.println("Inside the @Before Method");
-    }
-
-    @After
-    public void setUpAfterEnvironment() {
-        System.out.println("Inside the @After Method");
-    }
-
     @Test
-    public void givenFirstNameShouldPassWhenFirstNameRulesSatisfied() throws CustomEmailException {
+    public void givenFirstNameShouldPassWhenFirstNameRulesSatisfied() {
 
         try
         {
@@ -34,9 +24,7 @@ public class UserValidationTesting {
         }
         catch (CustomEmailException e)
         {
-            this.message = "First name must starts with a Capital Letter and maximum length should be 3 !!!";
-            throw new CustomEmailException(message);
-            //System.out.println("First name must starts with a Capital Letter and maximum length should be 3 !!!");
+            System.out.println(CustomEmailException.ExceptionType.FIRSTNAME_MUST_START_WITH_CAPITAL_LETTER_AND_MUST_BE_3_DIGITS_LONG);
         }
 
     }
@@ -52,9 +40,9 @@ public class UserValidationTesting {
             boolean expectedResult = true;
             Assert.assertEquals(expectedResult, actualResult);
         }
-        catch (AssertionError e)
+        catch (CustomEmailException e)
         {
-            System.out.println("Last name must starts with a Capital Letter and maximum length should be 3 !!!");
+            System.out.println(CustomEmailException.ExceptionType.LASTNAME_MUST_START_WITH_CAPITAL_LETTER_AND_MUST_BE_3_DIGITS_LONG);
         }
     }
 
@@ -71,10 +59,9 @@ public class UserValidationTesting {
             boolean expectedResult = true;
             Assert.assertEquals(expectedResult, actualResult);
         }
-        catch (AssertionError e)
+        catch (CustomEmailException e)
         {
-            System.out.println("Incorrect Email ID entered !!!");
-            System.out.println("Below are some examples of valid Email ID's => \nabc@domain.com \nabc.xyz@domain.com \nabc@domain.co.in \nabc.xyz@domain.co.in");
+            System.out.println(CustomEmailException.ExceptionType.EMAIL_ID_IS_IN_INCORRECT_FORMAT);
         }
     }
 
@@ -90,10 +77,9 @@ public class UserValidationTesting {
             boolean expectedResult = true;
             Assert.assertNotEquals(expectedResult, actualResult);
         }
-        catch (AssertionError e)
+        catch (CustomEmailException e)
         {
-            System.out.println("Incorrect Email ID entered !!!");
-            System.out.println("Below are some examples of valid Email ID's => \nabc@domain.com \nabc.xyz@domain.com \nabc@domain.co.in \nabc.xyz@domain.co.in");
+            System.out.println(CustomEmailException.ExceptionType.EMAIL_ID_IS_IN_INCORRECT_FORMAT);
         }
     }
 
@@ -108,10 +94,9 @@ public class UserValidationTesting {
             boolean expectedResult = true;
             Assert.assertEquals(expectedResult, actualResult);
         }
-        catch (AssertionError e)
+        catch (CustomEmailException e)
         {
-            System.out.println("Incorrect Mobile number entered !!!");
-            System.out.println("Mobile number should be in below format <coutry code><space><mobile number>");
+            System.out.println(CustomEmailException.ExceptionType.MOBILE_NO_MUST_BE_IN_FORMAT_COUNTRY_CODE_SPACE_MOBILE_NO);
         }
     }
 
@@ -126,9 +111,9 @@ public class UserValidationTesting {
             boolean expectedResult = true;
             Assert.assertEquals(expectedResult, actualResult);
         }
-        catch (AssertionError e)
+        catch (CustomEmailException e)
         {
-            System.out.println("Password must be minimum 8 digit long !!!");
+            System.out.println(CustomEmailException.ExceptionType.MINIMUM_8_DIGITS_PASSWORD_LENGTH_SHOULD_BE_THERE);
         }
     }
 
@@ -143,9 +128,9 @@ public class UserValidationTesting {
             boolean expectedResult = true;
             Assert.assertEquals(expectedResult, actualResult);
         }
-        catch (AssertionError e)
+        catch (CustomEmailException e)
         {
-            System.out.println("Password must contain at least one upper case letter !!!");
+            System.out.println(CustomEmailException.ExceptionType.PASSWORD_MUST_CONTAIN_AT_LEAST_ONE_CAPITAL_LETTER);
         }
     }
 
@@ -160,9 +145,9 @@ public class UserValidationTesting {
             boolean expectedResult = true;
             Assert.assertEquals(expectedResult, actualResult);
         }
-        catch (AssertionError e)
+        catch (CustomEmailException e)
         {
-            System.out.println("Password must contain at least one numeric letter !!!");
+            System.out.println(CustomEmailException.ExceptionType.PASSWORD_MUST_CONTAIN_AT_LEAST_ONE_NUMERIC_LETTER);
         }
     }
 
@@ -177,9 +162,9 @@ public class UserValidationTesting {
             boolean expectedResult = true;
             Assert.assertEquals(expectedResult, actualResult);
         }
-        catch (AssertionError e)
+        catch (CustomEmailException e)
         {
-            System.out.println("Password must contain exact one special symbol !!!");
+            System.out.println(CustomEmailException.ExceptionType.PASSWORD_MUST_CONTAIN_EXACT_ONE_SPECIAL_SYMBOL);
         }
     }
 }

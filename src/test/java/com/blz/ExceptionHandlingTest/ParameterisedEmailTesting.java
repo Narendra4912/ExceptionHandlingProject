@@ -1,5 +1,6 @@
 package com.blz.ExceptionHandlingTest;
 
+import com.blz.ExceptionHandlingMain.UserValidation;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,13 +15,13 @@ import java.util.regex.Pattern;
 public class ParameterisedEmailTesting {
 
     private String email;
-    private String regex = "^[a-z0-9]{3,20}([+._-][a-z0-9]+)?@[a-z0-9]+.[a-z0-9]{2,3}(.[a-z]{2})?$";
-    private Pattern pattern = Pattern.compile(regex);
-    private Matcher matcher = pattern.matcher(email);
-    private boolean expectedResult = true;
+    UserValidation user = new UserValidation();
+    private boolean expectedResult;
 
-    public ParameterisedEmailTesting(String email) {
+    public ParameterisedEmailTesting(String email, boolean expectedResult) {
+
         this.email = email;
+        this.expectedResult = expectedResult;
     }
 
     @Parameterized.Parameters
@@ -34,9 +35,9 @@ public class ParameterisedEmailTesting {
         });
     }
 
-    @Test
-    public void givenEmailWhenEMailShouldReturnValidEmail()
-    {
-        Assert.assertEquals(expectedResult, matcher.matches());
-    }
+//    @Test
+//    public void givenEmailWhenEMailShouldReturnValidEmail()
+//    {
+//        Assert.assertEquals(this.expectedResult, user.validEmailAddress(this.email));
+//    }
 }
